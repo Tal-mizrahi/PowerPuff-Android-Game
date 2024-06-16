@@ -4,16 +4,18 @@ import java.util.Random;
 
 public class GamaManager {
 
-    private int lives = 3;
+    private int initialLives = 3;
+    private int lives;
     private final int cols = 3;
     private final int rows = 7;
     private int ppgIndex;
     private CharacterType[][] allCharacters;
 
 
-    public GamaManager(int lives) {
-        if (lives > 0 && lives <= 3)
-            this.lives = lives;
+    public GamaManager(int initialLives) {
+        if (initialLives > 0 && initialLives <= 3) {
+            this.initialLives = initialLives;
+        }
         allCharacters = new CharacterType[rows][cols];
         resetGame();
     }
@@ -21,6 +23,7 @@ public class GamaManager {
     public void decreaseLive() {
         lives--;
     }
+
 
     public int getLives() {
         return lives;
@@ -35,7 +38,7 @@ public class GamaManager {
         }
         ppgIndex = cols/2;
         allCharacters[rows - 1][ppgIndex] = CharacterType.POWER_PUFF;
-        lives = 3;
+        lives = initialLives;
 
     }
     public void movePlayer(int direction) {

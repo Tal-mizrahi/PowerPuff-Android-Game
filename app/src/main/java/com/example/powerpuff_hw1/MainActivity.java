@@ -1,6 +1,5 @@
 package com.example.powerpuff_hw1;
 
-import static android.app.PendingIntent.getActivity;
 
 import android.content.Context;
 import android.os.Build;
@@ -16,16 +15,17 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int ROWS = 7;
-    public static int COLS = 3;
+    private final int ROWS = 7;
+    private final int COLS = 3;
+    private final int LIVES = 3;
     private AppCompatImageView[][] matrix;
     private AppCompatImageView[] ppg_IMG_hearts;
-    private MaterialButton ppg_BTN_left;
-    private MaterialButton ppg_BTN_right;
+    private FloatingActionButton ppg_BTN_left;
+    private FloatingActionButton ppg_BTN_right;
     private GamaManager gameManager;
     private PowerPuff ppgPlayer;
     private MojoJojo mojoJojo;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         findViews();
-        gameManager = new GamaManager(3);
+        gameManager = new GamaManager(LIVES);
         gameManager.resetGame();
         ppg_BTN_left.setOnClickListener(v -> movePPG(-1));
         ppg_BTN_right.setOnClickListener(v -> movePPG(1));
@@ -151,13 +151,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d("pttt", "SZ - gameManager.getLives() " + num);
 
         for (int i = 0; i < SZ - gameManager.getLives(); i++) {
-            ppg_IMG_hearts[SZ - i - 1].setVisibility(View.INVISIBLE);
+            ppg_IMG_hearts[i].setVisibility(View.INVISIBLE);
         }
     }
 
     public void updateObstaclesUI() {
        CharacterType[][] locationMatrix = gameManager.getAllCharacters();
-        int ppgInd = gameManager.getPpgIndex();
         for(int i = 0 ; i < ROWS - 1 ; i++) {
             for (int j = 0; j < COLS; j++) {
                 if (locationMatrix[i][j] == CharacterType.EMPTY) {
@@ -170,13 +169,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loseGame() {
-        createToast("You loss!");
+        createToast("You lose!");
+        stopGame();
         gameManager.resetGame();
         updatePowerPuffUI();
         updateLivesUI();
         updateObstaclesUI();
         addObstacle = false;
         matrix[ROWS - 1][gameManager.getPpgIndex()].setImageResource(ppgPlayer.getImage());
+        startGame();
     }
 
 

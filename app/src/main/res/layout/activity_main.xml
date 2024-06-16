@@ -20,7 +20,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ppg_BTN_left"
-        style="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
@@ -29,13 +29,15 @@
         android:backgroundTint="#E91E63"
         android:src="@drawable/ic_left_arrow"
         app:tint= "#FFFFFF"
+        app:elevation="@dimen/cardview_default_radius"
         app:maxImageSize="40dp"
+        app:fabCustomSize="65dp"
         />
 
 
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ppg_BTN_right"
-        style="@style/Widget.Material3.Button.Icon"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginRight="25dp"
@@ -45,9 +47,11 @@
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:backgroundTint="#E91E63"
-        app:icon="@drawable/ic_right_arrow"
-        app:iconGravity="textEnd"
-        app:iconSize="40dp"
+        android:src="@drawable/ic_right_arrow"
+        app:tint= "#FFFFFF"
+        app:elevation="@dimen/cardview_default_radius"
+        app:maxImageSize="40dp"
+        app:fabCustomSize="65dp"
         />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -62,8 +66,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ppg_IMG_heart1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_heart"/>
 
@@ -73,8 +77,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ppg_IMG_heart2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_heart"/>
 
@@ -84,17 +88,17 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ppg_IMG_heart3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_heart"
             />
 
 
 
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-<!--    The Matrix Of The Obstacles-->
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -241,7 +245,8 @@
                 android:layout_weight="1"
                 android:layout_centerInParent="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_ppg"/>
+                android:src="@drawable/ic_ppg"
+                />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
