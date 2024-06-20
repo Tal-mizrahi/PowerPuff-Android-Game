@@ -23,4 +23,5 @@ To set up the game on your local machine, follow these steps:
    - Use the gradlew build command or the build option in Android Studio.
 
 ## Demo Video
-[![Watch the video](C:\Users\Tal\Downloads\power_puff_game.mp4)
+https://github.com/Tal-mizrahi/Mobile-Game/assets/141766722/d0bc996d-b740-4c5f-8d1f-09ed85229736
+
