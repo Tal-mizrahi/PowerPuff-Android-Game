@@ -21,3 +21,6 @@ To set up the game on your local machine, follow these steps:
 3. Open the project in Android Studio.
 4. Build the project to download all dependencies:
    - Use the gradlew build command or the build option in Android Studio.
+
+## Demo Video
+[![Watch the video](C:\Users\Tal\Downloads\power_puff_game.mp4)
