@@ -136,15 +136,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateLivesUI() {
         int SZ = ppg_IMG_hearts.length;
-        Log.d("pttt", "SZ" + SZ);
-
         for (int i = 0; i < SZ; i++) {
             ppg_IMG_hearts[i].setVisibility(View.VISIBLE);
         }
 
         int num = SZ-gameManager.getLives();
-        Log.d("pttt", "SZ - gameManager.getLives() " + num);
-
         for (int i = 0; i < SZ - gameManager.getLives(); i++) {
             ppg_IMG_hearts[i].setVisibility(View.INVISIBLE);
         }
