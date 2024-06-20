@@ -4,24 +4,27 @@ import java.util.Random;
 
 public class GamaManager {
 
-    private int initialLives = 3;
+    private int numOfCollisions = 0;
     private int lives;
-    private final int cols = 3;
-    private final int rows = 7;
+    private int cols;
+    private int rows;
     private int ppgIndex;
-    private CharacterType[][] allCharacters;
+    private CharacterType[][] allPositions;
 
 
-    public GamaManager(int initialLives) {
-        if (initialLives > 0 && initialLives <= 3) {
-            this.initialLives = initialLives;
+    public GamaManager(int lives, int cols, int rows) {
+        if (lives > 0 && lives <= 3) {
+            this.lives = lives;
         }
-        allCharacters = new CharacterType[rows][cols];
-        resetGame();
+        this.cols = cols;
+        this.rows = rows;
+        allPositions = new CharacterType[rows][cols];
+        resetBoardGame();
     }
 
     public void decreaseLive() {
         lives--;
+        numOfCollisions++;
     }
 
 
@@ -30,43 +33,45 @@ public class GamaManager {
     }
 
 
-    public void resetGame() {
+    public void resetBoardGame() {
         for (int i = 0; i < rows ; i++) {
             for (int j = 0; j < cols; j++) {
-                allCharacters[i][j] = CharacterType.EMPTY;
+                allPositions[i][j] = CharacterType.NULL;
             }
         }
         ppgIndex = cols/2;
-        allCharacters[rows - 1][ppgIndex] = CharacterType.POWER_PUFF;
-        lives = initialLives;
-
+        allPositions[rows - 1][ppgIndex] = CharacterType.POWER_PUFF;
     }
+
+    public void restLive() {
+        lives += numOfCollisions;
+    }
+
     public void movePlayer(int direction) {
         if(ppgIndex + direction >= 0 && ppgIndex + direction <= cols - 1) {
-            allCharacters[rows - 1][ppgIndex] = CharacterType.EMPTY;
+            allPositions[rows - 1][ppgIndex] = CharacterType.NULL;
             ppgIndex += direction;
-            allCharacters[rows - 1][ppgIndex] = CharacterType.POWER_PUFF;
+            allPositions[rows - 1][ppgIndex] = CharacterType.POWER_PUFF;
         }
-       // return ppgIndex;
     }
 
     public int getPpgIndex() { return ppgIndex;}
 
-    public CharacterType[][] getAllCharacters(){
-        return allCharacters;
+    public CharacterType[][] getAllPositions(){
+        return allPositions;
     }
 
     public void AddObstacle(){
-        allCharacters[0][getRndInt(cols)] = CharacterType.MOJO_JOJO;
+        allPositions[0][getRndInt(cols)] = CharacterType.MOJO_JOJO;
     }
 
     public void updateAllObstaclesLocations(boolean addObstacle) {
         for (int i= rows - 2; i>0; i--){
-            System.arraycopy(allCharacters[i - 1], 0, allCharacters[i], 0, cols);
+            System.arraycopy(allPositions[i - 1], 0, allPositions[i], 0, cols);
         }
 
         for (int i = 0 ; i < cols ; i++) {
-            allCharacters[0][i] = CharacterType.EMPTY;
+            allPositions[0][i] = CharacterType.NULL;
         }
 
         if (addObstacle)
@@ -74,7 +79,7 @@ public class GamaManager {
     }
 
     public boolean isCollision(){
-        return allCharacters[rows-2][ppgIndex] == CharacterType.MOJO_JOJO;
+        return allPositions[rows-2][ppgIndex] == CharacterType.MOJO_JOJO;
     }
 
     public int getRndInt(int range){

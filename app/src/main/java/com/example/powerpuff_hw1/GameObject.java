@@ -1,21 +1,19 @@
 package com.example.powerpuff_hw1;
 
-public class MojoJojo {
+public class GameObject {
 
     int image;
 
-    public MojoJojo() {
+    public GameObject() {
     }
 
     public int getImage() {
         return image;
     }
 
-    public MojoJojo setImage(int image) {
+    public GameObject setImage(int image) {
         this.image = image;
         return this;
     }
-
-
 
 }

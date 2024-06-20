@@ -11,9 +11,9 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.45"
+        android:alpha="0.55"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_hearts_background"
+        android:src="@drawable/hearts_background"
         />
 
 
@@ -25,7 +25,7 @@
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="55dp"
         android:backgroundTint="#E91E63"
         android:src="@drawable/ic_left_arrow"
         app:tint= "#FFFFFF"
@@ -41,7 +41,7 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="55dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:insetTop="0dp"

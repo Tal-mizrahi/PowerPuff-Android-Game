@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
     private final int ROWS = 7;
     private final int COLS = 3;
     private final int LIVES = 3;
-    private AppCompatImageView[][] matrix;
+    private AppCompatImageView[][] gameBoard;
     private AppCompatImageView[] ppg_IMG_hearts;
     private FloatingActionButton ppg_BTN_left;
     private FloatingActionButton ppg_BTN_right;
     private GamaManager gameManager;
-    private PowerPuff ppgPlayer;
-    private MojoJojo mojoJojo;
+    private GameObject powerPuff;
+    private GameObject mojoJojo;
     private  boolean addObstacle = false;
     private final Handler handler = new Handler();
     private final int DELAY = 1000;
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         findViews();
-        gameManager = new GamaManager(LIVES);
-        gameManager.resetGame();
+        gameManager = new GamaManager(LIVES, COLS, ROWS);
+        gameManager.resetBoardGame();
         ppg_BTN_left.setOnClickListener(v -> movePPG(-1));
         ppg_BTN_right.setOnClickListener(v -> movePPG(1));
         startGame();
@@ -68,15 +68,10 @@ public class MainActivity extends AppCompatActivity {
         stopGame();
     }
 
-    private void tick() {
-        gameContinuation();
-    }
-
-
     private Runnable runnable = new Runnable() {
         public void run() {
             handler.postDelayed(runnable, DELAY);
-            tick();
+            gameContinuation();
 
         }
     };
@@ -95,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             gameManager.decreaseLive();
             updateLivesUI();
             vibrate();
-            if(gameManager.getLives() != 0)
+            if(gameManager.getLives() > 0)
                 createToast("You hit Mojo-Jojo");
             else
                loseGame();
@@ -129,13 +124,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updatePowerPuffUI(){
-        CharacterType[] ppgRow = gameManager.getAllCharacters()[ROWS - 1];
+        CharacterType[] ppgRow = gameManager.getAllPositions()[ROWS - 1];
 
         for(int i = 0 ; i < COLS ; i++) {
-            if(ppgRow[i] == CharacterType.EMPTY)
-                matrix[ROWS - 1][i].setImageResource(0);
+            if(ppgRow[i] == CharacterType.NULL)
+                gameBoard[ROWS - 1][i].setImageResource(0);
             else if(ppgRow[i] == CharacterType.POWER_PUFF)
-                matrix[ROWS - 1][i].setImageResource(ppgPlayer.getImage());
+                gameBoard[ROWS - 1][i].setImageResource(powerPuff.getImage());
         }
     }
 
@@ -156,13 +151,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateObstaclesUI() {
-       CharacterType[][] locationMatrix = gameManager.getAllCharacters();
+       CharacterType[][] locationMatrix = gameManager.getAllPositions();
         for(int i = 0 ; i < ROWS - 1 ; i++) {
             for (int j = 0; j < COLS; j++) {
-                if (locationMatrix[i][j] == CharacterType.EMPTY) {
-                    matrix[i][j].setImageResource(0);
+                if (locationMatrix[i][j] == CharacterType.NULL) {
+                    gameBoard[i][j].setImageResource(0);
                 } else if (locationMatrix[i][j] == CharacterType.MOJO_JOJO) {
-                    matrix[i][j].setImageResource(mojoJojo.getImage());
+                    gameBoard[i][j].setImageResource(mojoJojo.getImage());
                 }
             }
         }
@@ -171,12 +166,13 @@ public class MainActivity extends AppCompatActivity {
     public void loseGame() {
         createToast("You lose!");
         stopGame();
-        gameManager.resetGame();
+        gameManager.resetBoardGame();
+        gameManager.restLive();
         updatePowerPuffUI();
         updateLivesUI();
         updateObstaclesUI();
         addObstacle = false;
-        matrix[ROWS - 1][gameManager.getPpgIndex()].setImageResource(ppgPlayer.getImage());
+        gameBoard[ROWS - 1][gameManager.getPpgIndex()].setImageResource(powerPuff.getImage());
         startGame();
     }
 
@@ -185,10 +181,10 @@ public class MainActivity extends AppCompatActivity {
 
         ppg_BTN_left = findViewById(R.id.ppg_BTN_left);
         ppg_BTN_right = findViewById(R.id.ppg_BTN_right);
-        ppgPlayer = new PowerPuff().setImage(R.drawable.ic_ppg);
-        mojoJojo = new MojoJojo().setImage(R.drawable.ic_mojo_jojo);
+        powerPuff = new GameObject().setImage(R.drawable.ic_ppg);
+        mojoJojo = new GameObject().setImage(R.drawable.ic_mojo_jojo);
 
-        matrix = new AppCompatImageView[][] {
+        gameBoard = new AppCompatImageView[][] {
                 {findViewById(R.id.ppg_REL_MAT_00), findViewById(R.id.ppg_REL_MAT_01), findViewById(R.id.ppg_REL_MAT_02)},
                 {findViewById(R.id.ppg_REL_MAT_10), findViewById(R.id.ppg_REL_MAT_11), findViewById(R.id.ppg_REL_MAT_12)},
                 {findViewById(R.id.ppg_REL_MAT_20), findViewById(R.id.ppg_REL_MAT_21), findViewById(R.id.ppg_REL_MAT_22)},

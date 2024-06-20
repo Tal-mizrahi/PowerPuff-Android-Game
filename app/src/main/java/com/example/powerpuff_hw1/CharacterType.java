@@ -1,7 +1,7 @@
 package com.example.powerpuff_hw1;
 
 public enum CharacterType {
-    EMPTY,
+    NULL,
     POWER_PUFF,
     MOJO_JOJO;
 }
