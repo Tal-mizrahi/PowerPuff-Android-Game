@@ -1,7 +1,7 @@
 # Mobile Game: Powerpuff Girls vs. Mojo Jojo
 
 ## Overview
-Welcome to the Powerpuff Girls mobile game! In this endless runner, you control the Powerpuff Girls as they evade their arch-nemesis, Mojo Jojo. Starting with three lives, your goal is to avoid Mojo Jojo's attacks for as long as possible. Each time you collide with Mojo Jojo, you lose a life. Once all lives are lost, the game resets and you can try again to beat your high score.
+Welcome to the Powerpuff Girls mobile game! In this endless runner, you control the Powerpuff Girls as they evade their arch-nemesis, Mojo Jojo. Starting with three lives, your goal is to avoid Mojo Jojo's attacks for as long as possible. Each time you collide with Mojo Jojo, you lose a life. Once all lives are lost, the game resets.
 
 ## Features
 - **Endless Gameplay:** Test your reflexes and see how long you can last.
@@ -15,3 +15,9 @@ To set up the game on your local machine, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Tal-mizrahi/Mobile-Game.git
+2. Navigate to the project directory:
+   ```bash
+   cd Mobile-Game
+3. Open the project in Android Studio.
+4. Build the project to download all dependencies:
+   - Use the gradlew build command or the build option in Android Studio.
