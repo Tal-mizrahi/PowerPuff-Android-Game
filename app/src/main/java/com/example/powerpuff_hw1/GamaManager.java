@@ -45,6 +45,7 @@ public class GamaManager {
 
     public void restLive() {
         lives += numOfCollisions;
+        numOfCollisions = 0;
     }
 
     public void movePlayer(int direction) {
