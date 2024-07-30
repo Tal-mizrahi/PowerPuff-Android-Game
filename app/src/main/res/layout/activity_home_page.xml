@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_page_pic"
+    tools:context=".views.activities.HomePageActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/ppg_REL_mode">
+
+
+<com.google.android.material.textview.MaterialTextView
+    android:id="@+id/ppg_LBL_mode"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Mode: Buttons"
+    android:padding="8dp"
+    android:gravity="center"
+    android:textSize="26sp"
+    android:textStyle="bold"
+    android:background="#150E16"
+    android:textColor="#C057D1"
+    />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ppg_REL_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@id/ppg_LAY_startGame" >
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/ppg_BTN_changeMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="CHANGE MODE"
+            android:textStyle="bold"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/ppg_BTN_records"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:text="WATCH RECORDS"
+            android:textSize="18sp"
+            android:textStyle="bold"
+
+            />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        >
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ppg_LAY_startGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/ppg_BTN_fast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="START FAST"
+            android:textStyle="bold|italic"
+            />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="0dp"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/ppg_BTN_slow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="START SLOW"
+            android:textStyle="bold|italic"
+        />
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>
