@@ -26,10 +26,10 @@ To set up the game on your local machine, follow these steps:
    - Use the gradlew build command or the build option in Android Studio.
   
 ## Game Photos
-![Screenshot_20240713-212045_PowerPuff_HW1](https://github.com/user-attachments/assets/d1915bb4-c847-48f3-ae18-159e58981645)
-![Screenshot_20240713-212037_PowerPuff_HW1](https://github.com/user-attachments/assets/6bb7f973-4dc5-41f8-a4bf-7b97c2b0bef2)
-![Screenshot_20240713-212128_PowerPuff_HW1](https://github.com/user-attachments/assets/c985b04c-ce7d-4eb3-9ce4-6e876cf2af81)
-![Screenshot_20240713-212104_PowerPuff_HW1](https://github.com/user-attachments/assets/bb4b44b3-5486-4eec-8dbf-b1ea2542e77a)
+<img src="https://github.com/user-attachments/assets/d1915bb4-c847-48f3-ae18-159e58981645" alt="hohsedetails" width="300">
+<img src="https://github.com/user-attachments/assets/6bb7f973-4dc5-41f8-a4bf-7b97c2b0bef2" alt="hohsedetails" width="300">
+<img src="https://github.com/user-attachments/assets/c985b04c-ce7d-4eb3-9ce4-6e876cf2af81" alt="hohsedetails" width="300">
+<img src="https://github.com/user-attachments/assets/bb4b44b3-5486-4eec-8dbf-b1ea2542e77a" alt="hohsedetails" width="300">
 
 
 
